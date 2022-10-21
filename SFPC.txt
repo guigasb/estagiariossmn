@@ -1,0 +1,127 @@
+ Ser ágil é realizar um caminho apenas uma vez, não so na rapidez mas na qualidade, evitando desperdício.
+o quão ágil eu quero ser??
+
+o modelo cascata jamais pode voltar um processo, é analisado bem o custo, escopo, cronograma
+
+modelo iterativo incremental = divide os requisitos em entregas menores, que o cliente valida e pode fazer alterações menores
+
+em resumo sobre os projetos utilizando métodos ágeis:
+
+	o software e produtos inovadores não seguem fluxo.
+
+	raro o cliente saber o que quer logo  no início.
+
+	Cliente precisa ter paciência, pois só vai receber o produto ao final do projeto- e as vezes não é o que estava esperando.
+
+como saber se um projeto é complexo ou complicado?
+
+MODELO CYNEFIN
+	Simples - Contextos fáceis,  sem complicações, o modo melhor, não há muitas surpresas nem novidades
+	Complicado - Riscos significantes surgem e devem ser avaliados, planejamento prévio para evitar fracassos. Planejamentop de uma ponte, por exemplo, há um bom grau de previsibilidade, o melhor é muito rígido
+	Complexo - Aqui a impresibilidade ganha grandes espaço, sabemos muito pouco o que vai acontecer. A gestão de mudanças é mais complicada, podendo mudar bastante.
+	Caótico -  A criatividade toma grande espaço, não há previsibilidade
+		DESORDEM - Quando um modelo na verdade é outro, inicialmente pensamos que era de uma forma, mas depois descobrimos que é outro.
+
+O QUE É MVP: PRODUTO MÍNIMO VIÁVEL 
+O MVP é uma forma de verificar se o produto será aceito no mercado mesmo antes de ser terminado.
+primeira etapa do projeto
+VANTAGENS testar o projeto, pode ser corrigido, então é incremental.
+não é sobre entregar funcionalidades mal feitas, é sobre entregar apenas a quantidade necessária com qualidade
+
+exemplo do spotfy 
+	1 think it (pense nisso)
+	2 build it (construa isso)
+	3 ship it (entregue isso)
+	4 tweak it (refine isso)
+
+QUAL O MAIOR RISCO DE USAR O MVP?
+o mal entendimento do que é o mínimo produto, entregando o produto com más funcionalidades. Não pode representar um produto superficial.
+
+
+MANIFESTO ÁGIL
+não é um método de desenvolvimento, mas é um guia que baseia o desenvolvimento de outros métodos.
+
+QUAIS OS VALORES DO MANIFESTO ÁGIL
+Indivíduos e interações > processos e ferramentas
+Software em funcionamento > documentação abrangente
+Colaboração com o cliente > negociação de contratos
+Responder as mudanças > seguir um plano
+
+LEAN THINKING
+focada 100% no cliente
+focada em criar valor
+eliminar desperdícios
+1 passo 
+	como melhorar o trabalho?
+	qual é o problema que precisamos resolver?
+	como desenvolver pessoas?
+
+5 PRINCIPIOS PARA A GESTÃO LEAN
+	1 Valor
+	2 Fluxo de valor
+	3 Fluxo contínuo
+	4 Produção puxada
+	5 Perfeição
+premissa básica Lean
+	problema = oportunidade
+	aprendizado contínuo
+	satisfação ao cliente
+
+Os 7 desperdícios de Lean
+o que é desperdício? atividades que consomem recursos e não retornam valor ao cliente
+	Desperdício necessário = não agrega valor ao cliente mas é necessário ex. documentação, testes...
+	Desperdício puro = desperdício 
+
+8 desperdícios 
+	1 Transporte
+	2 Inventário 
+	3 Movimentação
+	4 Espera
+	5 Produção Excessiva
+	6 Processamento excessivo
+	7 Defeitos
+	8 Capital Intelectual
+
+LEAN NO DESENVOLVIMENTO DE SOFTWARE
+Eliminar desperdício 
+	1 Trabalho Parcialmente feito
+	2 Processos extras
+	3 Funcionalidades extras
+	4 Alteração de tarefas
+	5 Espera
+	6 Esforço de comunicação
+	7 Defeitos
+Integrar qualidade
+	Inspeção após os defeitos ocorrerem
+	Ispeção para previnir defeitos
+
+Criar conhecimento 
+	A medida que o projeto avança nós aprendemos sobre ele
+
+Adiar comprometimento 
+	Exemplo de comprometimento: isso vai ser lançado dia xx/xx/xxxx
+		1 Identificar quando estamos fazendo uma escolha.
+		2 Identificar se a escolha é reversível 
+		3 Quanto tempo precisamos para voltar atrás da decisão que está sendo tomada
+
+Entregar rápido // maximizar o ROI (return on investiment)
+
+Respeitar as pessoas
+
+Otimizar o todo
+
+
+SCRUM 
+
+3 PILARES
+	EMPIRISMO
+		1 TRANSPARÊNCIA
+		2 INSPEÇÃO 
+		3 ADAPTAÇÃO
+
+5 VALORES
+	1 CORAGEM
+	2 FOCO
+	3 COMPROMETIMENTO
+	4 RESPEITO
+	5 ABERTURA

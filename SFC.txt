@@ -1,0 +1,57 @@
+comprometimento =/= envolvimento 
+
+porcos = time comprometido com o desenvolvimento do projeto
+galinhas = usuários, gerentes...
+
+papeis centrais
+PO = representa a voz do cliente no projeto, tem que entender no negócio.
+Scrum Master = facilitador do time, resolvedor de bronca.
+time scrum = equipe de desenvolvimento que entendeu o problema e a solicitação do cliente.
+
+steakholders = partes interessadas
+scrum guidance body (sgb) = recurso opicional, garantindo qualidade, segurança...
+fornecedores = fornece serviços ao time.
+dono do produto chefe = facilitar o trabalho do PO
+scrum master chefe= so quando tem time grande
+
+o scrum adota uma abordagem de melhoria contínua, na qual o backlog muda de acordo com as alterações dadas pelo cliente
+
+risco 
+risco positivo = oportunidade
+
+os riscos devem ser identificados, avaliados e respondidos com base nos fatores:
+probabilidade e impacto.
+
+principáis artefatos scrum
+declaração de  visão do projeto = escopo, objetivos, metas e justificativa de sua existência 
+backlog = requisitos funcionais e não funcionais, podendo ser constantemente alterado
+backlog da sprint = backlog que vai ser usado na sprint específica 
+épicos = histórias de usuários grandes e não refinadas, a medida que ganha prioridade, evolui para historias de usuários menores.
+estória = descrição resumida de uma funcionalidade que deve ser entregue, sempre dada pela visão do cliente. Promessa de discutir uma funcionalidade ou um lembrete
+
+gráfico de burndown = soma da estimativa dos esforços restantes no backlog, permitindo também uma comparação com os atuais trabalhos realizados.
+scrum task board = feito, a fazer e pronto.
+
+cerimônias(eventos) do scrum.
+timebox= tempo determinado dos eventos
+
+sprint = 1 a 6 semanas, com metas estabelecidas 
+sprint planning = 8 horas mensais
+	1. definição do objetivo = prioridade máxima das estórias do usuário.
+	2. estimativa de trabalho = o time decide como completar as taks,o que será feito e como.
+	3. daily = o que fiz, o que vou fazer, e impedimentos.
+	4. monitoriar o processo com gráfico de burn down.
+	5. sprint review = revisa o que foi feito naquela sprint, 4 horas para a sprint de um mês, promovida pelo PO, que define se realmente alcançou o objetivo.
+	6. retrospectiva = inspecionar como ocorreu a ultima sprint, o que funcionou e o que não funcionou, Scrum Master promove. 4 horas para sprint de 4 semanas.
+	7. Refinamento = feito pelo PO, refina o backlog de acordo com os incrementos. 4 horas para sprint de 4 semanas.
+
+release= envio de entregáveis, sendo validado pelos steakholders
+Pilares da colaboração = conscientização, articulação e apropriação
+Pilares dos time auto-organizáveis =  flexibilidade, criatividade e produtividade.
+
+É no aspecto Justificativa de Negócios que a Priorização Orientada a Valor se torne importante.
+A Priorização Baseada em Valor para o Cliente, dá importância prioritária para o cliente, e se esforça para implementar em primeiro lugar as Estórias de Usuário com o valor mais alto.
+ Esses valores são identificados e movidos para o topo do Backlog Priorizado do Produto.
+
+Justificativa de Negócios -- Priorização orientada a valor
+Reunião de Retrospectiva do Projeto -- não é time-boxed
