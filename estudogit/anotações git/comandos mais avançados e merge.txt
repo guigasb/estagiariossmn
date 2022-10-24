@@ -1,0 +1,15 @@
+git reflog - acessar histórico de versões
+git reset --hard (versao desejada) - voltar a versoes anteriores
+git rm -r (nome do diretorio) - remover diretorio
+git branch (nome) - criar novo branch
+git checkout (nome da branch) - entrar em uma branch especifica
+git checkout -b nome-da-branch master - criar branch com base na branch principal
+
+como fazer um merge
+1 passo - entrar na branch que está recebendo as atualizações(master) /git checkout
+2 - unir os codigos puxando da branch que desejo para a branch principal /git merge "nome da branch)
+3 - git push
+
+*alerta - antes de unir novas funcionalidades (merge), deve-se puxar as atualizações do servidor para minha máquina, usando
+git pull 
+somente fazer o merge após /git pull
