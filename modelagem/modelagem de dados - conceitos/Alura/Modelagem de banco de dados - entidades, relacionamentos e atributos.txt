@@ -1,0 +1,93 @@
+Módulo 1 - Banco de dados
+
+O modelo lógico é criado para realizar a descrição de como os dados serão armazenados no sistema. 
+Ele explora os conceitos de domínio. Nesse modelo, descrevemos as entidades, os atributos, 
+as chaves primárias e estrangeiras e os seus relacionamentos.
+
+O modelo físico também é criado para descrever as tabelas, suas colunas e os relacionamentos.
+Diferente do modelo lógico, podemos utilizar uma linguagem padrão para realizar essa representação: a linguagem SQL, 
+utilizada para trabalhar com banco de dados relacionais.
+
+Modelo conceitual é um esquema, ou seja, um desenho que mostra como faremos as representações e as conexões
+dos dados que vamos armazenar
+
+SGBD - é o que gerencia o banco de dados
+-inclui, altera ou consulta
+-tudo o que fazemos em um banco passa pelo SGBD
+
+O que foi aprendido nesse módulo:
+Identificar um modelo lógico de dados e um modelo físico de dados.
+Diferenciar um modelo de alto nível de um modelo de baixo nível.
+Entender o que são os SGBDs.
+Aplicar as técnicas de modelagem utilizando a ferramenta CASE.
+_________________________________________________________________________________________________________________________________
+
+Módulo 2 - modelo entidade-relacionamento
+
+Mini mundo - recorte do mundo real
+Representação da estrutura do negócio, espelhando recortes do mundo real
+
+Modelo Entidade Relacionamento - MER
+-Modelo conceitual
+-Usado pra descrever os objetos do mundo real (entidade), as suas caracteristicas (abributos) e como eles se relacionam.
+
+Diagrama Entidade Relacionamento - DER;
+
+O que foi aprendido nesse módulo:
+Aplicar o conceito de mini-mundo.
+Desenvolver o processo de abstração.
+Explicar a importância das entrevistas.
+Diferenciar o Modelo Entidade e Relacionamento (MER) do Diagrama Entidade e Relacionamento (DER).
+
+_________________________________________________________________________________________________________________________________
+
+Módulo 3 - Entidades
+
+É um objeto único no mundo real
+ex: Clientes de uma empresa, carros que são vendidos, depertamento de uma empresa
+pode ser algo abstrato (departamento) ou concreto (carro, pessoa, etc)
+
+Identificando as entidades
+
+entidade forte(chave primária) e entidade fraca (depende da forte)
+
+geralmente entidades são representadas com substantivo, então para identifica-las procure pelo artigo que o precede e
+identifique o substantivo. este, então, possivelmente será a entidade
+
+
+O que foi aprendido nesse módulo:
+Identificar os tipos de entidades.
+Diferenciar as entidades fortes das entidades fracas.
+Representar as entidades no brModelo.
+
+_________________________________________________________________________________________________________________________________
+
+Módulo 4 - Diagrama entidade-relacionamento
+
+Grau binário, ternário e n-ário
+
+Cardinalidade = Conectividade;
+Duas coisas que de alguma forma, se conectam.
+
+Como essas coisas vão se conectar?
+
+Tipos de cardinalidade
+Cardinalidade 1:1 
+1 departamento sendo gerenciado por 1 colaborador e vice-versa
+
+Cardinalidade 1:N
+1 departamento onde n colaboradores trabalham
+
+Cardinalidade N:M
+muitos pra muitos
+
+ex: (1,       1)
+     |          \  
+cardinalidade    cardinalidade maxima
+   minima
+
+O que foi aprendido nesse módulo:
+Identificar os tipos de relacionamento.
+Determinar o grau de um relacionamento.
+Reconhecer os tipos de cardinalidade.
+Representar relacionamentos no DER.

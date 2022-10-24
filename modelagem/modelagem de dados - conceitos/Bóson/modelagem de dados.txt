@@ -1,0 +1,408 @@
+ Conceitos básicos de banco de dados
+
+Dados x Informação 
+
+Dados: são fatos em uma forma primária que podem ser armazenados em algum meio
+ex: cpf, nome, data
+
+Informação: são os dados organizados de modo a produzir um significado, ou seja, dados colocados num contexto
+
+Metadados:
+São dados sobre os dados, informações que dizem respetio aos próprios dados armazenados no banco, usados pra garantir 
+consistência e persistência
+
+______________________________________________________________________________________________________________________________
+
+Banco de Dados
+
+Coleção organizada de dados
+
+São organizados pra modelar aspectos do mundo real
+
+Aplicação de Bancos de Dados
+
+-sistemas bancários
+-reservas em hotéis
+-e-commerce
+-youtube
+-receita federal
+-controle de estoques
+-catálogos
+
+SGBD
+Sistema de gerenciamento de banco de dados
+
+São softwares que permitem aos usuários criarem e manterem um ou mais bancos de dados
+Ex: SQL server
+
+______________________________________________________________________________________________________________________________
+Sistema de banco de Dados
+
+é um sistema que contém um banco de dados, SGBDs e aplicativos de acessos a esses dados
+
+Usuário > Aplicativo > SGBD < Metadados
+
+Usuários de bancos de dados
+-administrador
+-projetista/desenvolvedor
+-usuário final
+
+Caracteristicas e Funcionalidades
+-Controle de redundâncias -> evitar duplicidade dos dados
+-multiplas visões dos dados -> exibir pros usuarios os dados de formas distintas
+-controle de concorrência -> dois usuarios tentam acessar o mesmo registro ao mesmo tempo para fazer alterações
+o banco de dados precisa gerenciar esse acesso para evitar que um subscreva a informação que o outro está tentando
+gravar 
+-Backup e restauração
+-Autenticação e autorização de acesso
+-Restrições de integridade -> não posso cadastrar um produto se o fornecedor não o tem; não posso cadastrar um usuario
+se não possuo o cpf dele; etc
+_______________________________________________________________________________________________________________________________
+Modelos
+
+Modelagem de dados:
+-Criar um modelo de dados para um sistema de informação com aplicação de técnicas específicas de modelagem
+-processos usados para analisar e definicir os requisitos de dados que são necessários para as regras do negócio que o 
+cliente precisa
+
+
+Modelo relacional
+-Os dados são separados em entidade, conforme cada assunto, e registrados como atributos dessas entidades. as entidades
+se relacionam entre si e permitem que os dados sejam armazenados e recuperados de forma rápida e segura
+-Os dados são organizados em tabelas bidimensionais (relações)
+-criado com base na lógica e teoria de conjuntos
+
+Componentes do Modelo Relacional
+-Coleções de objetos ou relações vulgo tabelas
+-Operadores que agem nas relações
+-Mecanismos que garantem a integridade dos dados
+-Tabelas, que armazena todos os dados necessários sobre algo do mundo real
+-Tupla > ou  linha ou registro -> representa todos os dados requeridos por uma determinada ocorrência de uma entidade 
+-Coluna > armazena tipo específico de dado, ou não armazena nada (valor nulo)
+ex: nome
+-Relacionamentos > associação entre as tabelas/entidades
+Outros: indices, triggers, etc
+-Chave primária: identifica um registro de forma exclusiva, contendo um valor que não se repete na relação
+-Chave estrangeira
+
+Análise de requisitos
+-Fase de coleta de informação, que analisa o que é exigido para o banco de dados a ser criado
+
+Modelo entidade-relacionamento
+-Criado a partir das especificações do negócio ou narrativa do usuário, permitindo ilustrar as entidades em um negócio
+e também relacionamento entre elas
+- Separa a informação necessária das atividades que são relacionadas no negócio
+
+elementos do mer
+-entidade
+ex:cliente
+algo especial que devemos possuir informações
+-atributo
+descreve ou qualifica a entidade
+-relacionamento
+associação entre entidades
+ex:cliente -compra- produto /compra é o relacionamento
+-identificador único
+combinação de atributo usado para distinguir ocorrências de uma entidade.
+ex:venda específca, produto em particular, cliente específico, etc 
+
+_______________________________________________________________________________________________________________________________
+
+Níveis de modelagem
+
+-Modelo conceitual
+-modelo lógico
+-modelo físico
+
+Modelo conceitual:
+Primeira fase da modelagem, onde representamos o mundo real por meio de uma visão simplificada dos dados e seus relacionamentos.
+nesse nível o projeto é independente de SGBD
+
+exemplo:
+cadastro de produtos em uma loja
+levantamento dos dados necessários; (nome, categoria, código de fornecedor, tipo de embalagem, tamanho, etc)
+
+Modelo lógico
+-o projeto ainda é independente
+-faz a especificação logica no formato que posteriormente será adicionado em um formato SGBD adequado
+-possui conceitos que os usuários são capazes de entender, ao mesmo tempo em que não está distante do modelo físico do banco
+de dados
+
+Modelo físico
+-detalhar a esturura dos componentes fisicos do banco de dados, incluindo tabelas, campos, tipos de valores, restrições, etc
+-podemos partir para a implementação física o banco de dados, utilizando o SGBD mais adequado
+
+Arquitetura de três níveis
+Mundo observado -> Modelo conceitual -> Modelo lógico -> Modelo físico
+
+Esquema do banco de Dados
+-Definição do banco especificada durante o projeto
+-mostra como o banco é construído 
+
+Etapas do desenvolvimento de um BD
+1 Especificação e análise de requisitos
+a. Os requisitos são documentos
+2 Projeto conceitual
+a. Baseado nos requisitos
+3 Projeto lógico
+a. Expresso em um modelo de dados, como um relacional
+4 Projeto físico
+a. Especificações
+b. Implementação do BD e inserção de dados reais e manutenção 
+
+Tarefas para modelagem
+-identificar entidades e tipos de entidades
+-identificar atrivutos
+-identificar relacionamentos
+-criar e associar chaves
+-normalizar para reduzir redundâncias
+-desnormalizar para aumentar a performance
+
+MER
+-após o levantamento dos requisitos, estes são transformados em um modelo entidade-relacionamento, o qual consiste dos seguintes
+elementos: entidades, relacionamentos, atributos
+É posteriormente refinado com o uso de técnicas específicas, e finalmente implementado em um banco de dados físicos
+Com o mer, conseguimos representar de forma abstrata toda a estrutura que vai constituir o banco de dados a ser
+criado
+
+Diagrama entidade relacionamento - der
+representação gráfica desses elementos
+
+retangulos-entidades
+elipses-atributos
+losangos-relacionamentos
+linhas-ligam atributos a entidades 
+
+
+________________________________________________________________________________________________________________________________
+
+Entidades
+-Algo de importancia pro usuario ou pra organização e que precisa ser representado no banco de dados
+-representa um tema, tópico ou conceito de negócio. podendo ser fisica ou abstrata
+-Cada objeto de uma entidade é denominado de instancia de entidade
+ex: empregados, livros, vendas, produtos
+-Nomeamos as entidades com substantivos que representam de forma clara e objetiva sua função
+-representado por meio de retangulos contendo o nome no singular da entidade
+Nomes de Entidades:
+devem começar com uma letra;
+usar palavra no singular;
+não pode ter espaço ou caracter especial
+Os nomes de colunas devem ser únicos dentro de uma tabela
+Os nomes das entidades tambem devem ser unicos dentro do esquema
+
+Instancia de entidade
+Uma entidade em si é uma descrição da estrutura e formato das ocorrências da entidade, como uma "receita", ou "planta"
+Uma instância de entidade é uma ocorrência específica de uma entidade.
+
+Carro                    Fiesta
+Fabricante               Ford
+Modelo                   AXJ-4010
+Cor                      Vermelho
+
+(Classe               (instâncias de 
+de entidade)            entidade)
+
+_________________________________________________________________________________________________________________________________
+
+Chaves
+
+uma chave consiste em uma ou mais colunas de uma rlação cujos valores são usados para identificar de forma exclusiva uma
+linha ou conjunto de linhas. Pode ser única ou não-única
+única: candidata, composta, primária, surrogada
+não-única: estrangeira
+
+Chave primária: chave dandidata escolhida para ser a chave principal na relação
+-identifica de forma exclusiva os registros em uma tabela, não podendo ter repetição de valores nem tampouco valor nulo
+
+Chave estrangeira: coluna de uma tabela que estabelece um relacionamento com a chave primária de outra tabela
+-é a partir da chave estrangeira que sabemos com qual registro em outra tabela um registro está relacionado 
+
+Chave composta
+-é composta de dois ou mais atributos (colunas)
+geralmente empregada quando não é possível utilizar uma única coluna de uma tabela para identificar de forma exclusiva
+seus registros
+
+Chave surrogada/substituta
+-Valor numério único adicionado a uma relação para servir como chave primária.
+Não possui significado para os usuários e geralmente fica escondida nas aplicações.
+as chaves substitutas são frequentemente usadas no lugar de uma chave primária composta
+
+Como criar chaves primárias e estrangeiras
+
+_________________________________________________________________________________________________________________________________
+
+Restrições de integridade
+
+Manutenção e garantia da consistência e precisão dos dados, sendo um aspecto crítico no design, implementação e uso de sistemas 
+de armazenamento de dados
+
+Dados precisos e consistentes, sem variações e corrupções no banco de dados
+
+Integridade de domínio
+ex: em uma coluna que armazena preços de mercadorias, os valores admitidos são do domínio numérico - ou seja, apenas números
+
+Fatores
+-Tipo de dado do campo
+-representação interna (como vou representar esse dado? é inteiro? flutuante? tem casas decimais? etc)
+-presença ou não do dado
+-intervalo de valores 
+-conjuntos de valores discretos
+
+Integridade referencial
+Assegura que valores de uma coluna em uma tabela seja válido baseado nos valores em uma outra tabela relacionada.
+ex: se um produto de id 523 foi cadastrado em uma tabela de vendas, então um produto com id 523 deve existir na tabela
+de produtos relacionada.
+
+Integridade de vazio
+Diz respeito se a coluna é obrigatória ou opcional - ou seja, se é possível ou não inserir um valor em uma coluna
+uma coluna primária, por exemplo, é obrigatório que sempretenha um valor
+
+Valores nulos
+significa que não existem dados. é diferente de zero, espaço, string, vazio ou tabulação.
+-valor não foi inserido
+-valor é desconhecido
+-valor não é aproriado
+
+Integridade de Chave
+Valores inseridos na coluna de chave primária devem ser sempre únicos, não admitindo-se repetições nesses valores
+dessa forma, as tuplas serão sempre distintas
+
+Integridade definida pelo usuário
+Diz respeito a regras de negócio específicas que são definidas pelo usuário do banco de dados.
+ex: pode-se definir que uma coluna somente aceitará um conjunto restrito de valores
+
+_________________________________________________________________________________________________________________________________
+
+Diagramação
+-O diagrama entidade relacionamento é a representação gráfica de um MER, que é um modelo conceitual.
+Faciltia a modelagem e a comunicação entre os membros da equipe de desenvolvimento, permitindo que todos falem a mesma "lingua"
+durante o processo
+
+Mais usados:
+Modelo de Peter Chan
+Modelo crow's foot
+
+_________________________________________________________________________________________________________________________________
+
+Dicionário de Dados
+
+É uma ferramenta utilizada para armazenar informações sobre o conteúdo, formato e estrutura de um banco de dados, assim como
+os relacionamentos entre os seus elementos
+É importante manter um dicionário de dados para limitar erros ao criar a estrutura física do banco de dados no computador 
+ 
+_________________________________________________________________________________________________________________________________
+
+Dependência funcional
+
+Imagine uma entidade E e dois atributos X e Y.
+Y é funcionalmente dependente do X se pra cada valor de X eu tiver associado exatamente um valor de Y;
+X -> Y
+
+Um campo depende de outro campo
+
+
+_________________________________________________________________________________________________________________________________
+
+Anomalias de atualização
+São problemas que podem ocorrer em bancos de dados que foram mal planejados e não normalizados
+Geralmente ocorre porque existe um excesso de dados em uma mesma tabela, os dados foram colocados nos locais errados ou em 
+tabelas incorretas 
+Possivelmente são causadas pelas dependencias parciais e transitivas
+
+Anomalia de inclusão
+Ocorre quando tenta incluir um dado novo no banco de dados
+Não deve ser possivel adicionar um dado a nao ser que outro dado esteja disponivel
+
+ex -> cadastrar o livro sem que o autor esteja cadastrado
+
+Anomalia de exclusão
+Ocorre quando voce tenta excluir um dado
+Ao excluirmos um registro, dados referentes em outra tabela são excluidos. Por exemplo, se excluirmos um autor, os livros desse
+autor devem ser excluidos tambem.
+
+Anomalia de modificação
+Ocorre quando tenta alterar dados cadastrados
+Ocore quando dados em outras tabelas tambem precisam ser modificados
+Ex: se o codigo de um autor for modifigado, esse codigo deve ser modificado na tabela de autores e na de livros tambem
+
+Como eliminar anomalias
+
+Projetar os equemas de relações no banco de dados de modo que nao ocorra anomalias
+Para isso, usamos a normalização
+
+
+_________________________________________________________________________________________________________________________________
+
+Normalização 
+
+É o processo de análise de uma relação para assegurar que seja bem formada com campos e atributos coerentes pro tipo de 
+informação que ela irá armazenar
+
+Consiste e decompor relações com anomalias para produzir relações menores e bem estruturadas
+
+Podeomos inserir, excluir ou modificar registros sem criar anomalias
+
+3FN
+
+FORMA NORMAL DE BOYCE CODD
+
+Objetivos da normalização 
+Analisar esquemas de relação com base em suas dependências funcionais e chaves primarias para minimizar redundancias e anomalias
+de inserção, exclusão e modificação
+
+_________________________________________________________________________________________________________________________________
+
+PRIMEIRA FORMA NORMAL
+
+*Serve para reprovar atributos multivalorados
+O domínio de um atributo deve incluir apenas valores atômicos, e o valor de qualquer atributo em uma tupla deve ser
+único
+
+Como saber se uma tabela está na 1 forma normal:
+-so possui valores atômicos
+-não há grupos de atributos repetidos
+-existe uma chave primária
+-relações não possuem atributos multivalorados 
+
+SEGUNDA FORMA NORMAL
+BASEADA NO CONCEITO DE DEPENDENCIA FUNCIONAL TOTAL
+Move-se os atributos que não são dependentes da chave primária para uma nova tabela
+Um esquema de relação está na 2FN se cada atributo não-chave for total e funcionalmente dependente da chave pricipal
+Uma tabela está na 2ª FN se:
+-está na 1ª Fn
+-todos os atributos não-chave são funcionalmente dependentes de todas as partes da chave primária
+-não existem dependências parciais 
+-caso contrário, deve-se gerar uma nova tabela com os dados 
+
+*Eliminar dependencias parciais, transformando tabelas de dependencias totais
+
+TERCEIRA FORMA NORMAL
+BASEADA NO CONCEITO DE DEPENDENCIA TRANSITIVA
+
+Atributos não chave não podem depender de outros atributos não chave. Devem depender apenas da PK
+
+em outras palavras:
+a relação não deve ter um atributo não-chave determinado funcionalmente por outro atributo não-chave.
+ou seja, os atributos na nossa relação devem depender totalmente apenas da chave primária ou parte dela
+
+deve-se decompor a tabela em duas ou mais e montar uma nova relação
+
+*nenhuma coluna não chave deve depender de outro atributo não chave 
+
+requisitos
+-estar na 2fn
+-não existir dependências transitivas
+lemrando que: DEPENDENCIA TRANSITIVA é uma dependencia funcional entre dois ou mais atributos que não são chaves
+
+PASSOS DA NORMALIZAÇÃO
+tabela não normalizada -> remover atributos multivalorados e compostos ->  remover dependências parciais 
+                                           1ª FN                                 2ª FN     
+                                                                                       ↓
+                                                                           remover dependências transitivas
+                                                                                 3ª FN
+
+                                                                                       ↓
+                                                                           Forma normal de Boyce-Codd
+
+
+                                                                                                                                        
