@@ -1,0 +1,73 @@
+git init - inicializa repositório na pasta que você quer
+git status - mostra o status dos arquivos, se foram commitados ou não e etc
+git add nome da pasta/caminho da pasta - para ir adicionando por pastas, se por acaso so fizer mod em uma
+git add -A ou git add . - adiciona tudo que tem na pasta, deixa stagged
+git commit -m "comentário" - faz o commit para a o respositório local sua maquina.
+
+git log --oneline - para ver os commits que já foram feitos, exibe o hash(codigo do commit)
+git reflog - para ver o histórico dos commits
+
+git remote add origin https..(linkDoRepositorio) -  para fazer conexão do repositório remoto com o gitHub
+git push origin nome da branch - manda para o respositorio remoto Git HUB.
+git checkout -b nome da branch - cria uma nova branch e vai pra ela
+git checkout nome da branch - mudar de branch 
+git diff caminho do arquivo - mostra as mudanças que ocorreram no arquivo
+git branch - mostra as branchs que tem e em qual vc está
+git branch nome - cria nova branch com nome nome
+exit enter - sair do git
+git branch -d nome da branch - apagar uma branch
+
+git pull origin master
+<<<<<<< HEAD
+=======
+apertar q para sair de estado diferente do terminal.
+git remote -v - exibir as branchs remotas e seus links.
+
+>>>>>>> 1786fa245ff5c074befac04ae700275660b689ce
+git reset --hard 1658aa4(nº que tem no início depois do reflog). - voltar para a versão escolhida
+
+git push --set-upstream origin nome da branch - enviar para o repositório remoto a branch criada no repo local.
+
+<<<<<<< HEAD
+git remote -v / -n
+git remote remove nome da branch - remover branch
+git pull repo-teste master --allow-unrelated-histories
+
+=======
+>>>>>>> 1786fa245ff5c074befac04ae700275660b689ce
+Branch develop é a de desenvolvimento, quando tiver pronta manda para a master
+git merge nome da branch de onde vem o cod - copia as funcionalidades de uma branch para a que vc está.
+Primeiro o git merge envia para o repositório remoto, depois tem que fazer o pull pra poder enviar
+
+adicionado as pessoas no projeto - através de e-mail e etc.
+
+pull Request - qual a branch de origem e qual de destino? Gera relatório de como vai ficar as
+alterações, os outros desenvolvedores no projeto vêem o relatório e aprovam ou não.
+para fazer o pull request vai no projeto(na branch que quiser), clica na aba de pull request,
+new pull request, vai selecionar as branchs que vão fazer 
+
+Execute git config --list to check current username & email in your local repo.
+Change username & email as desired. Make it a global change or specific to the local repo:
+git config [--global] user.name "Full Name"
+git config [--global] user.email "email@address.com"
+Per repo basis you could also edit .git/config manually instead.
+
+$ git config --global user.name "Bob"
+$ git config --global user.email "bob@example.com"
+
+*git pull da branch principal
+*gerar nova branch a partir da branch principal
+*trabalhar e adicionar novas funcionalidades na nova branch que criou
+*finalizar o trabalho na branch temporária
+*git checkout na branch principal
+*git pull
+*Mergiar(unir) o código da branch temporaria com a branch principal(depois de testar)
+*git push da branch principal
+
+Estados do Git
+Um dos conceitos mais importantes do Git são os estados que podem ser aplicados em cada arquivo. 
+
+Três estados fundamentais:
+Commited – arquivos armazenados na base local.
+Modified – arquivos que sofreram mudanças, mas não foram enviados para a base local (commit).
+Staged – arquivos modificados marcados para que façam parte do próximo commit.
