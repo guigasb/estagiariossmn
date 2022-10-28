@@ -1,0 +1,75 @@
+ls -la: listar os arquivos
+git init - inicializa repositório na pasta que você quer
+git status - mostra o status dos arquivos, se foram commitados ou não e etc
+git add nome da pasta/caminho da pasta - para ir adicionando por pastas, se por acaso so fizer mod em uma
+git add -A ou git add . - adiciona tudo que tem na pasta, deixa stagged
+git commit -m "comentário" - faz o commit para a o respositório local sua maquina.
+git clone link do repositório - clona repo remoto dentro de uma pasta.
+
+git log --oneline --decorate --all
+git log --oneline --decorate - para ver os commits e pra onde o HEAD está apontando
+git log --oneline - para ver os commits que já foram feitos, exibe o hash(codigo do commit)
+git reflog - para ver o histórico dos commits
+
+git fetch - pega atualizações do repo remoto para o local sem fazer merge
+git pull repo-teste master --allow-unrelated-histories
+git remote add origin https..(linkDoRepositorio) -  para fazer conexão do repositório remoto com o gitHub
+git remote -v / -n
+git remote remove nome da branch - remover branch no repositorio remoto.
+git push origin nome da branch - manda para o respositorio remoto Git HUB.
+git push - ação para atualizar/enviar os commits para o repositório remoto a partir do seu repo local.
+git push --set-upstream origin nome da branch - enviar para o repositório remoto a branch criada no repo local.
+git push origin master -f - fazer push forçado
+git pull - atualizar repo local a partir do repo remoto
+git checkout -b nome da branch - cria uma nova branch e vai pra ela
+git checkout nome da branch - mudar de branch 
+git diff caminho do arquivo - mostra as mudanças que ocorreram no arquivo
+git diff master origin/master - diferenças
+git merge origin/master
+git branch - mostra as branchs que tem e em qual vc está
+git branch nome - cria nova branch com nome nome
+exit enter - sair do git
+git branch -d nome da branch - apagar uma branch repo local.
+
+git reset --hard 1658aa4(nº que tem no início depois do reflog). - voltar para a versão escolhida
+git mv "nomeAntigodoArquivo" "nomeNovoArquivo" - renomeia o arquivo que foi comitado. 
+
+git merge nome da branch de onde vem o cod - copia as funcionalidades de uma branch para a que vc está.
+Branch develop é a de desenvolvimento, quando tiver pronta manda para a master
+Primeiro o git merge envia para o repositório remoto, depois tem que fazer o pull pra poder atualizar
+
+pull Request - qual a branch de origem e qual de destino? Gera relatório de como vai ficar as
+alterações, os outros desenvolvedores no projeto vêem o relatório e aprovam ou não.
+para fazer o pull request vai no projeto(na branch que quiser), clica na aba de pull request,
+new pull request, vai selecionar as branchs que vão fazer 
+
+Execute git config --list to check current username & email in your local repo.
+$ git config --global user.name "Bob"
+$ git config --global user.email "bob@example.com"
+
+Estados do Git
+Um dos conceitos mais importantes do Git são os estados que podem ser aplicados em cada arquivo. 
+Três estados fundamentais:
+Commited – arquivos armazenados na base local.
+Modified – arquivos que sofreram mudanças, mas não foram enviados para a base local (commit).
+Staged – arquivos modificados marcados para que façam parte do próximo commit.
+
+Git Stash - área onde é possível armazenar código, sem a necessidade de realizar um commit,
+permitindo mudar de branch ou realizar outras operações de forma organizada.
+git stash save "h.txt" - colocar o arquivo em stash
+git stash list - listar os arquivos em stash
+git stash apply stash@{0} - colocar o arquivo em stash para staging pronto para ser comitado na respectiva
+branch, mas não retira o arquivo do registro de stash.
+git stash drop stash@{0} - retirar arquivo do stash
+git stash pop - O pop vai remover o stash mais recente da pilha e aplicar as mudanças que ele contém
+
+Git flow SMN - Master 
+               Staging
+	       Outras
+
+Criar sua branch a partir da master, puxar código da master para sua branch, fazer as modificações necessárias, fazer pull
+request para staging, se aceito as modificações ir para staging e fazer merge da sua branch para staging. Depois de
+implementados os outros requisitos da sprint, vai ser realizado o teste do código, homologação e apresentado ao cliente, 
+após aprovação do cliente, merge da master para sua branch, resolver os conflitos e depois devolve para a master(deploy).
+
+origin master/ repo local, origin/HEAD master.
