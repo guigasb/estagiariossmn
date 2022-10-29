@@ -115,7 +115,7 @@ SCRUM
 
 3 PILARES               3 PILARES
 	EMPIRISMO
-		1 TRANSPARÊNCIA
+		1 aparencia
 		2 INSPEÇÃO 
 		3 ADAPTAÇÃO
 
