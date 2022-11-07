@@ -1,0 +1,7 @@
+A Empresa ACME precisar construir um sistema para armazenar os dados de seus funcionários, seus respectivos superiores imediatos (pois é necessário armazenar as equipes com seus líderes) e entender
+ quais projetos um profissional ACME pode trabalhar.
+Um funcionário pode, ao longo de sua vida na empresa, trabalhar em vários projetos, onde, tais projetos podem englobar um time de funcionários.
+ Todos os funcionários têm previamente definidos em contrato, a data de início e a data de término de sua participação no projeto.
+Cada funcionário tem como informações básicas seu nome, Email, número funcional, bem como seu salário nominal.
+ Além disso, por ser uma empresa grande, todo funcionário está alocado em um único departamento. Cada departamento tem como informação básica seu número de identificação,
+  seu nome e seu andar. Um funcionário jamais pode ser membro de mais de um departamento. 

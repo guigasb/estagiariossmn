@@ -1,0 +1,10 @@
+Conseguimos um novo contrato e estamos muito felizes :D O novo cliente é uma superempresa do ramo de pastel e esse é o início de um grande projeto.
+ Essa é apenas a primeira demanda, mas já estamos negociando as próximas de muitas outras que virão. Seu primeiro trabalho será criar a modelagem desse sistema. 
+A demanda trata da criação de um sistema web. O acesso ao sistema será feito através do email e senha informados no cadastro de novos usuários. O gestor da área operacional 
+solicitou que fosse criado um usuário padrão para ele utilizando o e-mail 		
+cuidará do cadastro dos primeiros usuários. Conversando com ele, chegamos à conclusão de que não vamos precisar de muitas informações para o cadastro
+ de novos usuários, apenas do nome completo, data de nascimento, telefone fixo, celular, e-mail, endereço e uma foto do usuário. 
+Vamos precisar também identificar os usuários gestores, pois somente estes terão acesso ao cadastro de novos usuários. Além das rotinas de autenticação,
+ a primeira entrega contará também com uma rotina de agendamento de tarefas. 
+Os gestores poderão cadastrar tarefas para seus subordinados e acompanhar o andamento. Seria legal que os subordinados recebessem um e-mail sempre que uma nova tarefa fosse cadastrada para ele. 
+As tarefas serão compostas de uma mensagem e uma data limite para a execução. Quando a tarefa for finalizada pelo usuário, também seria legal que o gestor recebesse um e-mail.
