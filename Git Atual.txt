@@ -28,7 +28,7 @@ git diff master origin/master - diferenças
 git merge origin/master
 git branch - mostra as branchs que tem e em qual vc está
 git branch nome - cria nova branch com nome nome
-exit enter - sair do git
+exit enter - sair do gitgit 
 git branch -d nome da branch - apagar uma branch repo local.
 
 git reset --hard 1658aa4(nº que tem no início depois do reflog). - voltar para a versão escolhida
