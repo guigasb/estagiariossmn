@@ -152,15 +152,30 @@ select nome_livro from tbl_livro where nome_livro LIKE '_[^iS]%' --retorna regis
 select nome_livro from tbl_livro where nome_livro LIKE '_i__o%' --retorna registros que tem a segunda letra i e a quinta letra O não importando o resto
 select nome_livro from tbl_livro where nome_livro NOT LIKE 'M%' --retorna registros que não comecam com a letra M nao importa o resto
 
-select * from tbl_livro INNER JOIN tbl_autores ON tbl_livro.ID_autor = tbl_autores.ID_autor --RETORNA AQUILO QUE ESTÁ NAS DUAS TABELAS, QUE TEM CORRESPONDÊNCIA
-select L.nome_livro, E.nome_editora from tbl_livro AS L INNER JOIN tbl_editoras AS E ON L.ID_editora = E.ID_editora --INNER JOIN DE COLUNAS Apelidando as Tabelas
 
-select * from tbl_livro LEFT JOIN tbl_autores ON tbl_livro.ID_autor = tbl_autores.ID_autor --OUTER JOIN retorna tudo que esta na esquerda(primeira tabela) mesmo que não haja correspondencia na tabela direita, mostrando o que tem correspondencia e o que não tem
+--JOINS ----------------------------------------------------------------------------------
 
-select * from tbl_autores left join tbl_livro on tbl_livro.ID_autor = tbl_autores.ID_autor
+select * from tbl_livro 
+INNER JOIN tbl_autores 
+ON tbl_livro.ID_autor = tbl_autores.ID_autor --RETORNA AQUILO QUE ESTÁ NAS DUAS TABELAS, QUE TEM CORRESPONDÊNCIA
+
+select L.nome_livro, E.nome_editora 
+from tbl_livro AS L 
+INNER JOIN tbl_editoras AS E 
+ON L.ID_editora = E.ID_editora --INNER JOIN DE COLUNAS Apelidando as Tabelas
+
+select * from tbl_livro AS L
+LEFT JOIN tbl_autores AS A
+ON L.ID_autor = A.ID_autor --OUTER JOIN retorna tudo que esta na esquerda(primeira tabela) mesmo que não haja correspondencia na tabela direita, mostrando o que tem correspondencia e o que não tem
+
+select * from tbl_autores 
+left join tbl_livro 
+on tbl_livro.ID_autor = tbl_autores.ID_autor
 WHERE tbl_livro.ID_autor IS NULL --OUTER JOIN retorna apenas os livros que não tem autor, os livros em que o ID_autor é nulo, que não tem correspondência
 
-select * from tbl_autores RIGHT JOIN tbl_livro ON tbl_autores.ID_autor = tbl_livro.ID_autor --OUTER JOIN retorna todos os valores de livros que tenha ou não correspondencia com autores/mesma
+select * from tbl_autores 
+RIGHT JOIN tbl_livro 
+ON tbl_autores.ID_autor = tbl_livro.ID_autor --OUTER JOIN retorna todos os valores de livros que tenha ou não correspondencia com autores/mesma
 
 select * from tbl_livro
 RIGHT JOIN tbl_editoras on tbl_livro.ID_editora = tbl_editoras.ID_editora
@@ -177,6 +192,9 @@ FULL JOIN tbl_autores AS Au
 ON Li.ID_autor = AU.ID_autor 
 WHERE Li.ID_autor IS NULL
 OR Au.ID_autor IS NULL --FULL JOIN é um OUTER JOIN(retorna todos os registros que não tenham pelo menos 1 correspondência)
+
+-------------------------------------------------------------------------------------------
+
 
 select * from tbl_livro where ID_Autor IN (1,2) --retorna todos os registros em que o ID_Autor pode ir de 1 a 2
 select * from tbl_livro where ID_autor = 1 or ID_autor = 2 --mesma coisa do IN com o OR que deixa mais extenso
@@ -236,6 +254,58 @@ select * from tbl_livro order by nome_livro collate Icelandic_CI_AI --alterar o 
 select TOP(5) WITH TIES nome_time, pontos FROM tbl_times ORDER BY Pontos DESC -- WITH TIES verifica se existe algum registro fora da restrição de consulta que tenha
 -- o mesmo valor equivalente do ultimo item da consulta, garantindo que este item também seja mostrado na consulta
 
+CREATE VIEW vw_LivrosAutores AS --nomeia a view
+SELECT tbl_livro.nome_livro AS livro,
+tbl_autores.nome_autor AS autor 
+FROM tbl_livro
+INNER JOIN tbl_autores
+ON tbl_livro.ID_autor = tbl_autores.ID_autor;
+
+select * from vw_LivrosAutores --para Usar a view criada acima
+
+create view vw_LivroEditora AS
+select tbl_livro.nome_livro as livro,
+tbl_editoras.nome_editora as editora
+from tbl_livro
+inner join tbl_editoras 
+on tbl_livro.ID_editora = tbl_editoras.ID_editora;
+
+select * from vw_LivroEditora
+
+select * from tbl_editoras
+
+--EXEMPLO DO DEVMEDIA, fazendo um inner join com soma, agrupamento e ordenação:
+SELECT TOP 3
+   P.nome,
+   SUM(VN.valor) as TOTAL
+FROM
+   produto P, venda_produto VN
+WHERE
+   P.id = VN.id_produto
+GROUP BY
+   P.id
+ORDER BY
+   TOTAL DESC
+
+SELECT
+   P.nome,
+   SUM(VN.valor) as TOTAL
+  FROM
+   produto P, venda_produto VN
+  WHERE
+   P.id = VN.id_produto
+  GROUP BY
+   P.id
+  ORDER BY
+   TOTAL DESC
+  LIMIT 0, 3
 
 
+select top 4 , ISBN from tb_livro;
 
+select * from tbl_autores where ID_autor in (2,3,4);
+
+select * from tbl_autores where ID_autor = 2
+
+--SINTAXE para retornar com Like utilizando duas condições
+select nome_autor from tbl_autores where sobrenome_autor like 'Barret' or sobrenome_autor like 'Sobell';
