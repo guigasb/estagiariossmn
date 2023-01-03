@@ -309,3 +309,9 @@ select * from tbl_autores where ID_autor = 2
 
 --SINTAXE para retornar com Like utilizando duas condições
 select nome_autor from tbl_autores where sobrenome_autor like 'Barret' or sobrenome_autor like 'Sobell';
+
+select top 1 nome_autor from tbl_autores where sobrenome_autor = 'Blum'
+
+
+
+
