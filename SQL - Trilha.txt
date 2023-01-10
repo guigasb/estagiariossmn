@@ -1,0 +1,73 @@
+1º
+ - Conceitos básicos bancos de dados 
+ - Modelo Relacional 
+ - Entidade
+ - Relacionamento
+ - Atributo 
+ - Cardinalidade
+ - Normalização
+ - Primeira forma normal
+ - Segunda forma normal
+ - Terceira forma normal
+
+2º
+ - Tipos de dados
+ - Comandos DDL
+ - Comandos DML
+ - Comandos DQL
+ - Comandos DTL
+ - Comandos DCL  
+
+3º
+ - Script Constraint
+ - Identity
+ - Primary Key
+ - Foregin Key
+ - Unique
+ - NOT NULL
+ - Default
+ - Check
+
+4º
+ - Propriedade do SELECT
+ - Operadores lógicos
+ - Operadores aritméticos
+ - Operadores relacionais 
+ - Operadores auxiliares
+
+5º
+ - INNER JOIN 
+ - LEFT JOIN 
+ - RIGHT JOIN 
+ - FULL JOIN 
+ - CROSS JOIN 
+ - SELF JOIN
+
+7º
+ - Declaração de variáveis
+ - Funções de conversão
+ - Funções de texto
+ - Funções de data
+ - Função de Tratamento de Nulos
+ - Funções de agregações  
+
+8°
+ - VIEW
+ - STORED PROCEDURE
+ - TRIGGER
+ - USER FUNCTION
+
+9°
+  Conceito de administração de banco de dados
+ - ÍNDICE
+ - BACKUP
+ - BACKUP COM MANAGEMENT STUDIO
+ - BACKUP COM O T-SQL
+ - RESTORE
+ - RESTORE COM MANAGEMENT STUDIO
+ - RESTORE COM O T-SQL
+
+10º 
+ - Conceitos de segurança 
+ - Criando usuário e atribuindo permissões com SSMS
+ - Criando usuário e atribuindo permissões com T-SQL
