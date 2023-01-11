@@ -1,0 +1,693 @@
+SQL Server - Bóson treinamentos
+
+DEFINIÇÃO
+Linguagem de consulta estruturada padrão para acesso ao banco de dados
+
+Permite acesso a dados em SGBDR
+Permite definir os dados no banco e manipulá-los
+Permite criar e excluir bando de dados e tabelas
+Etc
+
+GRUPOS DE COMANDO
+DDL
+DML
+DCL
+DQL
+
+DDL - DATA DEFINITION LANGUAGE
+Comandos para criação e alteração de tabelas
+ex: CREATE(cria uma nova tabela ou outro objeato)
+ALTER (modifica um objeto existente no BD)
+DROP (exclui uma tabela ou coluna especifica)
+
+DML - DATA MANIPULATION LANGUAGE
+Comandos que permitem manipular as informações dentro do banco de dados
+ex: INSERT (cria um registro/linha)
+UPDATE (modifica registros)
+DELETE (exclui registros)
+
+DCL - DATA CONTROL LANGUAGE
+Comandos que permitem controlar o acesso de privilégios de usuários
+ex: GRANT (dá privilégios a um usário)
+REVOKE (retira privilégios fornecidos a um usuário)
+
+DQL - DATA QUERY LANGUAGE
+Comandos que permitem fazer consultas no banco de dados
+ex: SELECT (obtém registros especificados de uma ou mais tabelas)
+
+______________________________________________________________________________________________________________
+
+COMANDOS
+
+USE
+-instrui o SGBDR a utilizar o banco de dados especificado para rodas os comandos
+sintaxe: USE nome_banco_de_dados
+
+SP_HELPDB
+-informa o tamanho, taxa de crescimento e local do banco de dados
+sintaxe: sp_helpdb BANCO_DADOS
+
+SP_HELP
+-informa indices, chaves e campos, atributos e tipos de atributos
+
+IDENTITY
+-autoincremento
+o sistema gerará automaticamente um codigo para cada item cadastrado, que seguirá uma sequencia (1,1)
+
+SP_RENAME 'NomeTabela.NomeAtualColuna', 'NovoNomeColuna', 'COLUMN';
+-renomeia colunas inseridas em uma tabela
+
+SP_RENAME 'NomeTabela', 'NovoNomeTabela';
+-renomeia o nome de uma tabela
+
+UPDATE nome_tabela SET coluna = 'nome_registro' WHERE id = numero_id
+-atualiza ou modifica o registro de uma tabela
+*nota: comando BEGGIN TRANSACTION
+               ROLLBACK
+-> impede que uma tabela seja atualizada sem que a outra também seja, evitando que conflitos sejam
+gerados; 
+
+SELECT COUNT(*) FROM nome_tabela
+-conta o número de registros em uma tabela
+
+TRUNCATE TABLE nome_tabela
+-Remove todos os registros de uma tabela
+-Um comando rápido; É como a instrução DELETE porém sem usar a cláusula WHERE. Utiiza menos recursos
+de sistema e log de transações.
+
+ORDER BY Nome_Coluna 
+-Ordenar um resultado de forma ascendente ou descendente
+
+SELECT DISTINCT nome_coluna
+FROM Nome_tabela
+-não exibir valores duplicados
+
+CLÁUSULA WHERE
+-Filtra registros em uma consulta.
+sintaxe: SELECT * FROM nome_tabela WHERE nome_coluna= 'nome'
+
+UPDATE
+-Atualiza o registro de um campo da tabela
+Sintaxe: 
+UPDATE Tabela                   UPDATE tbl_autores
+SET CAMPO = NOVO_VALOR    -     SET sobrenome = brandao
+WHERE CONDICAO = VALOR          WHERE id = 1
+
+Fazendo update de vários registros de uma vez com a cláusula IN
+
+UPDATE aluno
+SET genero = 'F'
+WHERE id IN (2,4,9)
+
+DELETE
+-Apaga o registro da tabela
+Sintaxe:
+DELETE FROM nome_tabela    -    DELETE FROM tbl_autores
+WHERE condicao = valor          WHERE id = '1'
+  
+OPERADORES AND e OR
+-Usados para filtrar registros baseados em mais de uma condição
+Sintaxe:
+SELECT * FROM tbl_livro
+WHERE id > 2 and id_autor <3
+
+OVERRIDING SYSTEM VALUE
+-Força o preenchimento manual do id da tabela mesmo sendo identity
+
+YEAR
+-Retorna apenas o ano específico da coluna
+Sintaxe:
+SELECT year(data) from tbl_reparacao
+
+ALIAS
+-Nomeia uma coluna para facilitar a consulta ou um join
+Sintaxe: SELECT nome_colunas
+         AS nome_alias
+         FROM nome_table
+
+MAX / MIN
+-Seleciona o maior ou menor valor de uma coluna
+SELECT MAX(nome_coluna) from nome_tabela
+
+SELECT INTO
+-Seleciona dados de uma tabela e insere em uma diferente. Pode ser usada, por exemplo, para
+criação de cópias de backup de tabelas
+Sintaxe: SELECT coluna1,coluna2,coluna3
+         INTO nome_nova_tabela
+         FROM tabela_origem
+BETWEEN
+-Utilizado para seleção de intervalos, comumente utilizado junto à cláusula WHERE para selecionar
+um intervalo de filtragem
+Sintaxe: SELECT coluna FROM tabela
+         WHERE coluna BETWEEN valor1 AND valor2
+
+ex: SELECT * FROM tbl_livro
+    WHERE data_pub BETWEEN '20040517' AND '20100517'fc
+______________________________________________________________________________________________________________
+
+Restrições(Constraints)
+São regras aplicadas nas colunas da tabela, usadas pr alimitar os tipos de dados que são inseridos
+
+PRINCIPAIS
+-not null
+-unique
+-primary key
+-foreign key
+-check
+-default
+
+NOT NULL
+Impõe a uma coluna NÃO aceitar valores NULL. ou seja, o campo sempre deverá ter um valor
+
+UNIQUE
+Identifica de forma única cada registro em uma tabela. Ou seja, a informação não se repete no restante
+do banco de dados. Garantem a unicidade em uma coluna ou conjunto de colunas
+
+PRIMARY KEY
+Identifica de forma única cada registro em uma tabela
+
+FOREIGN KEY 
+Campo que aponta para uma chave primária em outra tabela
+
+SINTAXE BASE PARA FK
+CONSTRAINT "FK_id_" FOREIGN KEY ("id_") REFERENCES x(id)
+
+
+CHECK
+É usada para limitar uma faixa de valores que podem ser colocados na coluna
+Por exemplo, se definir uma coluna que aceita apenas dados numericos e o usuario colocar letras, a coluna
+não aceita
+
+DEFAULT
+É usada para inserir valores padrões em uma coluna
+Caso nenhum outro valor seja especificado, será inserido o valor default
+______________________________________________________________________________________________________________
+
+Funções agregadas (SUM,COUNT,MAX,MIN,AVG)
+
+Obtém valores minimos, máximos, totalizados e/ou médios dos registros das tabelas
+
+Sintaxes: SELECT MAX(nome_coluna) FROM nome_tabela -> retorna o valor máximo 
+          SELECT MIN(nome_coluna) FROM nome_tabela -> retorna o valor mínimo
+          SELECT AVG(nome_coluna) FROM nome_tabela -> retorna a média calculada
+          SELECT SUM(nome_coluna) FROM nome_tabela -> retorna o valor total da somatoria dos registros
+
+______________________________________________________________________________________________________________
+
+OPERADORES LIKE e NOT LIKE
+
+O operador LIKE é utilizado para buscar por uma determinada string dentro de um campo com valores textuais.
+Com ele podemos, por exemplo, buscar os registros cujo NOME inicia com uma determinada palavra, ou contém 
+um certo texto. Para efetuar esse tipo de consulta, podemos utilizar também o caractere % para indicar um
+"coringa", ou seja, um texto qualquer que pode aparecer no campo. 
+
+Sua sintaxe padrão é a seguinte:
+
+SELECT colunas FROM tabela WHERE campo LIKE 'valor'
+
+NOT LIKE inverte a comparação, verificando se os caracteres NÂO correspondem ao padrão especificado.
+
+-Usado junto com WHERE
+
+Sintaxe: WHERE coluna LIKE padrãodesejado
+
+Sintaxe com %: SELECT * FROM PESSOA WHERE Nome LIKE 'J%';
+
+'_este': Filtra os registros que contém 1 caractere qualquer no começo e em seguida o termo 'este'. 
+Por exemplo, seriam retornados registros contendo o valor 'teste', 'peste', 'veste';
+
+'b_m': Filtra os registros que comecem com a letra "b", contenham 1 caractere em seguida, e depois a letra "m".
+Nesse caso, atenderiam a esse filtro, por exemplo, os valores "bom", "bem", "bPm", etc.
+
+'[caracteres]' - Varios caracteres de uma vez ou uma sequência de caracteres
+
+______________________________________________________________________________________________________________
+
+JOINS
+
+INNER JOIN
+-Retorna linhas quando houver pelo menos uma correspondência em ambas as tabelas
+
+Sintaxe: SELECT coluna
+         FROM tabela1
+         INNER JOIN tabela2
+         ON tabela1.coluna=tabela2.coluna
+
+Exemplo: SELECT ch.valor,f.nome,f.sobrenome FROM tbl_funcionario AS F
+         INNER JOIN tbl_custo_hora AS CH
+         ON f.id=ch.id_funcionario
+
+Ex2:     SELECT CV.nome, V.modelo, V.placa, V.data_compra FROM tbl_veiculo AS V
+         INNER JOIN tbl_cor_veiculo AS CV
+         ON V.id_cor_veiculo=CV.id
+
+
+OUTER JOINS
+-Retorna linhas mesmo quando não houver correspondências em uma das tabelas.
+Divide-se em LEFT, RIGHT e FULL JOIN
+
+-LEFT JOIN -> Retorna todas as linhas da tabela à esquerda, mesmo se não houver correspondências na
+tabela à direita
+-RIGHT JOIN -> Retorna todas as linhas da tabela à direita, mesmo se não houver correspondências na
+tabela à esquerda
+-FULL JOIN -> Retorna linhas quando houver uma correspondência em qualquer uma das tabelas.
+É uma combinação de LEFT e RIGHT
+-CROSS JOIN -> é um tipo de junção em que cada linha de uma tabela é combinada com cada linha da outra tabela. 
+Isso resulta em todas as combinações possíveis entre as linhas das duas tabelas.
+É útil quando você deseja combinar todas as linhas de duas tabelas, independentemente de haver qualquer tipo de relação entre elas.
+-SELF JOIN -> A tabela se une a ela mesma. É útil quando você quer comparar linhas da mesma tabela e retornar as linhas que atendem a determinadas condições.
+Basicamente, um inner join que entra na própria tabela
+
+
+INNER JOIN EM VARIAS TABELAS:
+
+SINTAXE: SELECT * FROM TB_ContratoCotista
+         INNER JOIN TB_Contrato ON TB_Contrato.id_contrato = TB_ContratoCotista.id_contrato
+         INNER JOIN TB_Cotista ON TB_Cotista = TB_ContratoCotista.id_cotista
+______________________________________________________________________________________________________________
+
+OPERADORES IN E NOT IN - FILTRO DE MULTIPLAS CONDIÇÕES
+-Determina se algo corresponde a determinado valor em uma subconsulta ou lista, retornando sempre
+true ou false;
+Geralmente utilizado para substituir o operador OR em queries com muitas condições.
+
+Sintaxe:
+SELECT * FROM nome_tabela
+WHERE nome_coluna IN (1,2)
+
+______________________________________________________________________________________________________________
+
+ÍNDICES
+-Permitem que as aplicações de banco de dados encontrem os dados mais rapidamente, sem ter de ler a tabela
+toda.
+(os usuários não veem os índices)
+
+Só pode ser aplicado em uma coluna de tabela por vez;
+
+-Nota:Crie indices apenas em tabelas que necessitam de muitas consultas; Tabelas indexadas levam mais tempo
+para receberem atualizações.
+
+SINTAXE: CREATE INDEX nome_índice
+         ON nome_tabela (nome_coluna)
+
+______________________________________________________________________________________________________________
+
+CLÁUSULA IF/ELSE (CONDICIONAL)
+
+Realiza testes condicionais em declarações SQL usando a estrutura IF/ELSE
+Sintaxes:
+IF	CONDIÇÃO
+	DECLARAÇÃO
+
+Ou
+
+IF	CONDIÇÃO
+	DECLARAÇÃO
+ELSE
+	DECLARAÇÃO
+______________________________________________________________________________________________________________
+
+CONCATENAÇÃO DE STRINGS - Sequenciar strings (junção de textos)
+
+É possível concatenar strings usando-se o operador de concatenação +;
+
+Sintaxe: SELECT coluna1 + ' ' + coluna2 AS 'Nome desejado' FROM tbl_tabela
+
+______________________________________________________________________________________________________________
+
+CLÁUSULA WITH TIES
+
+Usada juntamente com a função TOP;
+
+Verifica se existe mais algum item de mesmo valor que o ultimo listado pelo TOP. Caso tenha, também
+é retornado
+
+Importante: deve-se usar o ORDER BY
+
+Sintaxe: SELECT TOP (3) WITH TIES nome_time,pontos
+         FROM tbl_times
+         ORDER BY pontos
+
+______________________________________________________________________________________________________________
+
+VIEWS
+
+Uma espécie de tabela virtual baseada no conjunto de resultados de uma consulta SQL;
+
+Tabela virtual resultante de uma consulta SQL que contém linhas e colunas, facilitando consultas para
+obtenção de informação.
+
+Como criar?
+
+CREATE VIEW [nome_view]
+AS SELECT colunas
+FROM tabela
+WHERE condição
+
+A view é comumente utiliza
+
+CRIAÇÃO DE VIEW COM INNER JOIN
+
+CREATE VIEW vw_funcionario_categ
+AS SELECT nome
+FROM tbl_funcionario AS f
+INNER JOIN tbl_categ_funcionario AS cf
+ON f.id=cf.id
+
+______________________________________________________________________________________________________________
+
+SUBCONSULTAS OU SUBQUERY
+
+-Consulta dentro de outra consulta SQL que retorna um resultado usado para alimentar ou como clausula 
+de filtragem de uma outra consulta mais externa;
+Basicamente um SELECT dentro de outro SELECT
+
+Sintaxe: SELECT coluna 
+         FROM tabela
+         WHERE coluna operador (SELECT coluna FROM tabmela WHERE condições)
+
+EX:      SELECT nome, sobrenome
+         FROM tbl_funcionario
+         WHERE id = 
+	            (SELECT id 
+	             FROM tbl_funcionario 
+	             WHERE nome = 'Cleiton');
+
+EX 2 (com update): 
+                  UPDATE tbl_peça
+                  SET preco_und = preco_und * 1.12
+                  WHERE id = 
+	                     (SELECT id
+	                      FROM tbl_peça
+	                      WHERE designacao='bloco do motor')
+______________________________________________________________________________________________________________
+
+STORED PROCEDURE/PROCEDIMENTO ARMAZENADO
+
+-Conjunto de instruções SQL normalmente agrupadas para executar uma rotina específica.
+São comparáveis a funções, mas possuem flexibilidade e recursos impossíveis dentro de funções;
+
+Vantagens: 
+-Oferecem maior desempenho devido ao código compilado
+-São fáceis de manter, pois as alterações são centralizadas em vez de serem feitas com código
+-Oferecem um alto nível de segurança, pois em vez de o acesso ser concedido ao objeto, a permissão pode ser
+dada somente para o stored procedure.
+
+Basicamente, as procedures criam um nível de abstração para permissões, onde em vez de conceder ao
+usuário direitos SELECT,INSERT, UPDATE ou DELETE, pode receber direitos EXECUTE.
+
+-Podem receber ou não parâmetros;
+-Podemos criar procedures que irão nos retornar os dados de uma tabela (SELECT) ou para inserir/atualizar/
+remover dados de uma tabela.
+
+SINTAXE COM INSERT:
+         CREATE PROCEDURE insert_veiculo
+         (@id_cor_veiculo SMALLINT, @id_cliente INT,@modelo VARCHAR(100), @placa CHAR(7), @data_compra DATETIME)
+         AS 
+         BEGIN
+	      INSERT INTO tbl_veiculo 
+	      VALUES (@id_cor_veiculo, @id_cliente, @modelo, @placa, @data_compra)
+         END
+
+PARA EXECUTAR: EXECUTE insert_veiculo 1,1,'Vectra','QFYD3RZ','20140815'
+
+SINTAXE COM SELECT:
+______________________________________________________________________________________________________________
+
+TRIGGER
+
+-São procedimentos armazenados, disparados pela execução de comandos DML (insert, update ou delete),
+comandos DDL (create,table,alter procedure,drop index, etc) ou logon do usuário.
+-Podem ser executados em views ou tabelas
+CRIAÇÃO DE TABELAS E COMANDOS NA PRÁTICA
+
+FOR ou AFTER
+-FOR é o valor padrão e faz o gatilho ser disparado junto da ação.
+-AFTER faz com que o disparo se dê somente após a ação que o gerou ser concluída.
+
+Quando um comando insert/update/delete é executado em uma tabela que tenha uma trigger FOR ou AFTER
+associado a ela, primeiro é feita a inserção/alteração/remoção na tabela, para que a trigger seja
+disparada.
+-Caso o comando gere um erro, a trigger não é disparada.
+-Podem ser utilizados apenas sobre tabelas;
+-Podem existir múltiplas triggers para cada comando DML;
+-A trigger é apenas associada a uma tabela.
+-Pode-se ter os comandos INSERT,UPDATE ou DELETE nas triggers FOR ou AFTER, sendo assim, uma única trigger
+pode conter os três comandos.
+
+INSTEAD OF
+-Faz a trigger ser executada no lugar da ação que a gerou, ou seja, se um update for executado em uma
+tabela com instead of assocaida, antes de realizar a atualização da tabela o comando vai disparar o trigger,
+além de executar os procedimentos e executar também o comando DML que foi realizado.
+-Geralmente utilizada para permitir ou estender possibilidades de update sobre views
+-Pode ser colocada em tabelas ou views
+
+CARACTERISTICAS DE UM TRIGGER
+-Podem ser utilizadas para realização da auditoria de dados, salvando dados em tabelas de histórico
+-Excesso de triggers no banco de dados podem interferir diretamente na perfomance do mesmo
+-Triggers podem ser habilitadas e desabilitadas através do comando
+
+SINTAXE: 
+Habilitar: ENABLE TRIGGER NM_ TRIGGER
+Desabilitar: DISABLE TRIGGER NM_TRIGGER
+
+-Ao executar o comando de insert, a trigger cria uma tabela chamada inserted que conta os mesmos campos da
+tabela original
+-Ao executar uma atualização, ele cria uma tabela virtual chamada DELETED com o valor antigo do registro
+e cria uma tabela virtual INSERTED com o novo valor do registro.
+-Ao executar uma exclusão, cria uma tabela virtual chamada DELETED com o valor do registro excluído.
+
+SINTAXE para criação de uma trigger FOR/AFTER:
+
+CREATE TRIGGER uTR_NAME
+ON NAME_TABLE
+FOR ou AFTER INSERT,UPDATE,DELETE
+AS
+BEGIN
+
+SINTAXE para criação de uma trigger INSTEAD OF:
+CREATE TRIGGER uTR_NAME
+ON NAME_TABLE ou NAME_VIEW
+INSTEAD OF INSERT/UPDATE/DELETE
+AS
+BEGIN
+	QUERY
+END
+______________________________________________________________________________________________________________
+
+BACKUP 
+
+-Proteje o banco de dados contra perda de dados e inatividade, contendo em algum tipo de repositório uma
+cópia funcional do banco de dados.
+-Com eles, um DBA pode fazer uma restauração a partir do último backup ou em um ponto de tempo específico.
+
+O SQL server possui 3 tipos de backup:
+-Completo
+-Diferencial
+-De logs de transação
+
+FULL/COMPLETO: É realizado uma copia do banco de dados inteiro, ou seja, toda a estrutura de criação de dados.
+
+DIFERENCIAL: São menores que os completos, pois capturam apenas o que foi alterado no banco de dados desde o
+seu último backup completo. Para realizar um backup diferencial é necessário ter realizado um backup full.
+
+LOG DE TRANSAÇÃO: São utilizados para restaurar todas as transações realizadas no banco de dados,podendo ser
+utilizados para restaurar um ponto específico no tempo.
+
+MODELOS DE RECUPERAÇÃO 
+-Determina a precisão que um banco de dados pode ser restaurado 
+
+Simple: Requer menos administração, pois os backups de log de transações são truncados regularmente
+Modelo full: permite restaurar em um determinado momento,pois os arquivos de log registram todas as 
+transacts SQL e a hora em que foram executadas. As desvantagens é que os logs podem crescer muito.
+Modelo bulk-logged: É o modelo menos usado. permite um bom desempenho enquanto utiliza o menor espaço
+de log. No entando, você não pode fazer uma recuperação em qualquer ponto no tempo.
+______________________________________________________________________________________________________________
+                                               SCRIPTS E COMENTÁRIOS 
+
+CREATE TABLE tbl_funcionario 
+(id SMALLINT PRIMARY KEY IDENTITY,
+id_end_funcionario SMALLINT,
+nome VARCHAR(50) NOT NULL,
+sobrenome VARCHAR(60) NOT NULL,
+data_admissao DATE NOT NULL,
+data_demissao DATE NULL
+CONSTRAINT FK_id_end_funcionario FOREIGN KEY (id_end_funcionario ) REFERENCES tbl_end_funcionario(id)
+)
+
+CREATE TABLE tbl_end_funcionario
+(id SMALLINT PRIMARY KEY IDENTITY,
+cep SMALLINT NOT NULL,
+uf CHAR(2) NOT NULL,
+bairro VARCHAR(40) NOT NULL,
+rua VARCHAR(150) NOT NULL,
+numero VARCHAR(8) NOT NULL,
+complemento VARCHAR(100) NULL,
+cidade VARCHAR(60) NOT NULL
+)
+
+
+
+                                                   INSERT
+
+INSERT INTO nome_tabela (colunas) VALUES ('valor 1'),('valor 2'),('valor 3')
+
+ 
+                                                ALTER E DROP
+ALTER TABLE tbl_livro
+ADD id SMALLINT NOT NULL
+CONSTRAINT fk_id_editora FOREIGN KEY (ID)
+REFERENCES tbl_editoras
+
+ALTER TABLE tbl_livro
+DROP COLUMN id_autor
+
+ALTER TABLE tbl_livro
+ALTER COLUMN id SMALLINT
+
+ALTER TABLE tbl_custo_hora
+DROP CONSTRAINT FK_id_funcionario
+
+ALTER TABLE Cliente
+ADD PRIMARY KEY (id_cliente)
+
+ALTER TABLE tbl_livros ADD CONSTRAINT FK_id_editora FOREIGN KEY (id_editora) REFERENCES tbl_editoras(id)
+
+                                        CRIAÇÃO DE TABELAS ASSOCIATIVAS
+
+CREATE TABLE tbl_sala_filme (
+id_sala SMALLINT,
+id_filme INT,
+PRIMARY KEY (id_sala,id_filme),
+CONSTRAINT FK_id_sala FOREIGN KEY (id_sala) REFERENCES tbl_sala(id),
+CONSTRAINT FK_id_filme FOREIGN KEY (id_filme) REFERENCES tbl_filme(id)
+)
+
+                                               INNER JOIN
+
+SELECT A.coluna1, V.coluna2 FROM nome_tabela ALIAS
+INNER JOIN  nome_tabela ALIAS
+ON A.id = V.id
+
+SELECT ch.valor,f.nome,f.sobrenome FROM tbl_funcionario AS F
+INNER JOIN tbl_custo_hora AS CH
+ON f.id=ch.id_funcionario
+
+ 	 				SELECT COM ORDENAÇÃO DESCENDENTE
+SELECT nome,sobrenome FROM aluno ORDER BY nome DESC;
+
+
+					SELECT COM ORDENAÇÃO ASCENDENTE
+SELECT nome,nascimento FROM aluno ORDER BY nome ASC;
+
+					SELECT UTILIZANDO PARÂMETROS LIKE PARA FILTRAR NOMES QUE COMEÇAM COM A LETRA F
+SELECT nome, sobrenome FROM aluno
+WHERE nome LIKE 'F%';
+
+					SELECT UTILIZANDO PARÂMETROS NOT LIKE PARA FILTRAR NOMES QUE NÃO COMEÇAM COM A LETRA A
+SELECT nome, sobrenome FROM aluno
+WHERE nome NOT LIKE 'A%';
+
+
+					SELECT UTILIZANDO PARÂMETROS LIKE PARA FILTRAR NOMES CUJA PRIMEIRA LETRA ESTEJA ENTRE F ATÉ M
+SELECT nome,sobrenome FROM aluno
+WHERE nome LIKE '[^F-M]%';
+
+					SELECT UTILIZANDO PARÂMETROS LIKE PARA FILTRAR NOMES CUJA PRIMEIRA LETRA NÃO ESTEJA ENTRE F ATÉ M
+SELECT nome,sobrenome FROM aluno
+WHERE nome LIKE '[^F-M]%';
+
+					SELECT ME RETORNANDO ALUNOS CUJO ID ESTEJA ENTRE 3 E 8
+SELECT nome, id FROM aluno 
+WHERE id > 3 AND id < 8;
+
+					SELECT ME RETORNANDO ALUNOS CUJO ID SEJA MENOR QUE 3 E MAIOR QUE 8
+SELECT nome, id FROM aluno 
+WHERE id < 3 OR id > 8;
+
+					SELECT COM CLÁUSULA IN ME RETORNANDO ESPECIFICAMENTE OS ALUNOS DE ID 3 E 8 C
+SELECT nome, id FROM aluno 
+WHERE id IN (3,8);
+
+					SELECT COM NOT IN QUE ME RETORNE ALUNOS CUJO ID NÃO SEJA 3 E 8
+SELECT nome, id FROM aluno 
+WHERE id NOT IN (3,8);
+
+					SELECT FILTRANDO COM BETWEEN(ENTRE): AQUI FILTRAMOS OS ALUNOS CUJO ID ESTÃO ENTRE 1 E 5
+SELECT nome FROM aluno
+WHERE id BETWEEN 1 AND 5;
+
+					CONTANDO NÚMERO DE REGISTROS DE UMA TABELA:
+SELECT COUNT(*) FROM aluno;
+SELECT COUNT(id) AS Total_Turmas FROM turma;
+
+
+					SELECT DISTINCT
+SELECT DISTINCT nome,sobrenome
+FROM aluno
+SELECT NOME FROM ALUNO
+
+					SELECT COM ALIAS, WHERE, ORDER BY e NOT IN
+
+SELECT p.id AS 'ID da peça', p.numero_peca AS 'Numero da peça', p.qtde AS 'Quantidade no estoque' 
+FROM tbl_peça P
+WHERE p.id NOT IN (1,2)
+ORDER BY qtde DESC
+
+
+					INNER JOIN UTILIZANDO 3 TABELAS: ALUNO, TURMA E ENDERECO_ALUNO
+SELECT a.id AS 'Id aluno',ea.id AS 'Id do endereço aluno', a.nome AS 'Nome do aluno',
+a.sobrenome AS 'Sobrenome do aluno', a.cpf, t.serie, ea.logradouro, ea.bairro, ea.numero, ea.cep 
+FROM aluno AS a
+INNER JOIN turma AS t
+ON t.id=a.id_turma
+INNER JOIN endereco_aluno AS ea
+ON a.id_endereco_aluno=ea.id
+
+					LEFT JOIN 
+SELECT a.nome, ca.id_aluno FROM aluno a 
+LEFT JOIN contato_aluno ca 
+ON a.id = ca.id_aluno
+					RIGHT JOIN
+SELECT a.nome, ca.id_aluno FROM contato_aluno ca
+RIGHT JOIN aluno a
+ON a.id = ca.id_aluno
+
+					FULL JOIN
+SELECT a.nome, ca.id_aluno FROM contato_aluno ca
+FULL JOIN aluno a
+ON a.id = ca.id_aluno
+					
+					SELF JOIN
+SELECT p1.nome, p1.sobrenome, pg.nome AS
+Gerente FROM professor2 p1
+INNER JOIN professor2 pg
+ON pg.id = p1.id_gerente
+ORDER BY Gerente
+
+
+					CROSS JOIN  
+SELECT p2.nome, p2.sobrenome, p.nome,p.sobrenome
+FROM professor p
+CROSS JOIN professor2 p2                                     
+
+					UTILIZANDO SUBQUERY 
+
+select * 
+	from [dbo].[tbl_funcionario] fu
+		inner join [dbo].[tbl_custo_hora] cu
+			on cu.id_funcionario = fu.id
+	where cu.valor > (
+		select avg(valor) 
+			from [dbo].[tbl_custo_hora]
+	)
+
+Outra query:
+	SELECT f.nome, f.sobrenome, ch.valor
+		FROM tbl_funcionario f
+			INNER JOIN tbl_custo_hora ch ON ch.id_funcionario = f.id
+		WHERE ch.id_funcionario IN (
+	    SELECT id_funcionario 
+			FROM tbl_categ_funcionario 
+		WHERE tipo = 'pleno'
+		);
